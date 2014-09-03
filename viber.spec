@@ -94,12 +94,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/rfremix-%{name}.deskt
 # Fix executable attributes:
 chmod 755 %{buildroot}/opt/%{name}/Viber
 
-# Create symlink:
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-  ln -s ../../opt/%{name}/Viber %{name}
-popd
-
 # Create run srcipt:
 mkdir -p %{buildroot}%{_bindir}
 echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
@@ -130,9 +124,6 @@ update-desktop-database &> /dev/null || :
 %posttrans
 gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 
-%clean
-rm -rf %{buildroot}
-
 %files
 /opt/viber
 %{_bindir}/%{name}
@@ -142,6 +133,9 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Sep 03 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-3.R
+- Correct script creating
+
 * Wed Sep 03 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-2.R
 - Remove rpath
 - Remake run script and modify desktop-file
