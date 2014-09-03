@@ -1,17 +1,18 @@
 %define debug_package %{nil}
 
-Summary:	Free instant messages and calls
-Summary(ru):	Бесплатные сообщения и звонки
-Name:		viber
-Version:	4.2.2.6
-Release:	1%{dist}
+Summary:        Free instant messages and calls
+Summary(ru):    Бесплатные сообщения и звонки
+Name:           viber
+Version:        4.2.2.6
+Release:        2%{dist}
 
-Group:		Applications/Internet
-License:	Proprietary
-URL:		http://viber.com
-Source0:	http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
+Group:      Applications/Internet
+License:    Proprietary
+URL:        http://viber.com
+Source0:    http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
 
 BuildRequires:  desktop-file-utils
+BuildRequires:  chrpath
 
 Provides:   libicuuc.so.48()(64bit)
 Provides:   libicui18n.so.48()(64bit)
@@ -78,7 +79,7 @@ pushd %{buildroot}
 popd
 
 # Modify *.desktop file:
-sed -e 's/Exec=\/opt\/viber\/Viber/Exec=LD_LIBRARY_PATH=\/opt\/viber\ \/opt\/viber\/Viber/g' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
+sed -e 's|Exec=\/opt\/viber\/Viber|Exec=%{_bindir}\/%{name}|g' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
 sed -e 's/Path=/Path=\/opt\/viber/g' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # Install *.desktop file:
@@ -88,6 +89,7 @@ desktop-file-install --vendor rfremix \
   --add-category X-Fedora \
   --delete-original \
   %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/rfremix-%{name}.desktop
 
 # Fix executable attributes:
 chmod 755 %{buildroot}/opt/%{name}/Viber
@@ -98,10 +100,18 @@ pushd %{buildroot}%{_bindir}
   ln -s ../../opt/%{name}/Viber %{name}
 popd
 
+# Create run srcipt:
+mkdir -p %{buildroot}%{_bindir}
+echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
+chmod +x %{buildroot}%{_bindir}/%{name}
+
 # Remove unused directories and tarball:
 pushd %{buildroot}
     rm %{name}-%{version}.x86_64.tar
 popd
+
+#Remove rpath
+find %{buildroot} -name "*" -exec chrpath --delete {} \; 2>/dev/null
 
 %post
 update-desktop-database &> /dev/null || :
@@ -132,5 +142,9 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Sep 03 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-2.R
+- Remove rpath
+- Remake run script and modify desktop-file
+
 * Sat Aug 30 2014 carasin berlogue <carasin DOT berlogue AT mail DOT ru> - 4.2.2.6-1
 - initial build for Fedora
