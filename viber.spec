@@ -4,7 +4,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        2%{dist}
+Release:        3%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
