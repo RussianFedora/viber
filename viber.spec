@@ -1,10 +1,11 @@
-%define debug_package %{nil}
+%global debug_package %{nil}
+%global __provides_exclude_from ^/opt/viber/.*$
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        3%{dist}
+Release:        4%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -133,6 +134,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Dec 10 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-4.R
+- Disable provides for Qt5 libs
+
 * Wed Sep 03 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-3.R
 - Correct script creating
 
