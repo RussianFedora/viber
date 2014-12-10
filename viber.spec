@@ -5,7 +5,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        4%{dist}
+Release:        5%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -134,6 +134,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Dec 10 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-5.R
+- Bump release
+
 * Wed Dec 10 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-4.R
 - Disable provides for Qt5 libs
 
