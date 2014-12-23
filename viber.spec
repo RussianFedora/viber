@@ -5,7 +5,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        6%{dist}
+Release:        7%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -81,14 +81,17 @@ pushd %{buildroot}
 popd
 
 # Modify *.desktop file:
-sed -e 's|Exec=\/opt\/viber\/Viber|Exec=%{_bindir}\/%{name}|g' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
-sed -e 's/Path=/Path=\/opt\/viber/g' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
+sed -e 's|Exec=\/opt\/viber\/Viber|Exec=%{name}|' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
+sed -e 's/Path=/Path=\/opt\/viber/' -i %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # Install *.desktop file:
 desktop-file-install --vendor rfremix \
   --dir %{buildroot}%{_datadir}/applications \
   --add-category Network \
   --add-category X-Fedora \
+  --remove-category Application \
+  --remove-key Encoding \
+  --set-icon Viber \
   --delete-original \
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/rfremix-%{name}.desktop
@@ -135,6 +138,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Tue Dec 23 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-7.R
+- Correct .desktop file
+
 * Fri Dec 12 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-6.R
 - Provides libqfacebook
 
