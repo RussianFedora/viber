@@ -5,7 +5,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        7%{dist}
+Release:        8%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -91,9 +91,10 @@ desktop-file-install --vendor rfremix \
   --add-category X-Fedora \
   --remove-category Application \
   --remove-key Encoding \
-  --set-icon Viber \
+  --set-icon viber \
   --delete-original \
   %{buildroot}%{_datadir}/applications/%{name}.desktop
+echo "StartupWMClass=ViberPC" >> %{buildroot}%{_datadir}/applications/rfremix-%{name}.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/rfremix-%{name}.desktop
 
 # Fix executable attributes:
@@ -138,6 +139,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Sat Aug 10 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-8.R
+- Correct .desktop file for Gnome
+
 * Tue Dec 23 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-7.R
 - Correct .desktop file
 
