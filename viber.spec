@@ -5,7 +5,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        8%{dist}
+Release:        9%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -15,8 +15,8 @@ Source0:    http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
 BuildRequires:  desktop-file-utils
 BuildRequires:  chrpath
 
-Provides:   libicuuc.so.48()(64bit)
-Provides:   libicui18n.so.48()(64bit)
+# Provides:   libicuuc.so.48()(64bit)
+# Provides:   libicui18n.so.48()(64bit)
 Provides:   libqfacebook.so()(64bit)
 
 ExclusiveArch:    x86_64
@@ -139,6 +139,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Mon Oct 19 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-9.R
+- Disable some provides libs
+
 * Sat Aug 10 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-8.R
 - Correct .desktop file for Gnome
 
