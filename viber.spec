@@ -5,7 +5,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        9%{dist}
+Release:        10%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -17,7 +17,8 @@ BuildRequires:  chrpath
 
 # Provides:   libicuuc.so.48()(64bit)
 # Provides:   libicui18n.so.48()(64bit)
-Provides:   libqfacebook.so()(64bit)
+Provides:       libqfacebook.so()(64bit)
+AutoReqProv:    no
 
 ExclusiveArch:    x86_64
 
@@ -139,6 +140,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Tue Oct 20 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-10.R
+- Disable autoreq
+
 * Mon Oct 19 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-9.R
 - Disable some provides libs
 
