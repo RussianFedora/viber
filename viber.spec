@@ -1,5 +1,7 @@
 %global debug_package %{nil}
 %global __provides_exclude_from ^/opt/viber/.*$
+%global to_exclude libcu(uc|i18n)\\.so
+%global __requires_exclude_from ^%{_libdir}/%{to_exclude}.*$
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
@@ -18,7 +20,6 @@ BuildRequires:  chrpath
 # Provides:   libicuuc.so.48()(64bit)
 # Provides:   libicui18n.so.48()(64bit)
 Provides:       libqfacebook.so()(64bit)
-AutoReqProv:    no
 
 ExclusiveArch:    x86_64
 
