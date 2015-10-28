@@ -1,11 +1,12 @@
 %global debug_package %{nil}
 %global __provides_exclude_from ^/opt/viber/.*$
+%global __requires_exclude ^(libicu|libqface)
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        4.2.2.6
-Release:        10%{dist}
+Release:        11%{dist}
 
 Group:      Applications/Internet
 License:    Proprietary
@@ -14,11 +15,6 @@ Source0:    http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  chrpath
-
-# Provides:   libicuuc.so.48()(64bit)
-# Provides:   libicui18n.so.48()(64bit)
-Provides:       libqfacebook.so()(64bit)
-AutoReqProv:    no
 
 ExclusiveArch:    x86_64
 
@@ -140,6 +136,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Oct 28 2015 Arkady L. Shane <ashejn@russianfedora.pro> - 4.2.2.6-11.R
+- exclude icu 48 and libqfacbook depends
+
 * Tue Oct 20 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-10.R
 - Disable autoreq
 
