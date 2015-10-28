@@ -8,15 +8,15 @@ Name:           viber
 Version:        4.2.2.6
 Release:        11%{dist}
 
-Group:      Applications/Internet
-License:    Proprietary
-URL:        http://viber.com
-Source0:    http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
+Group:          Applications/Internet
+License:        Proprietary
+URL:            http://viber.com
+Source0:        http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  chrpath
 
-ExclusiveArch:    x86_64
+ExclusiveArch:  x86_64
 
 %description
 More than 200 million Viber users text, call, and send photo and video messages
@@ -48,7 +48,7 @@ Main features:
 Viber.
 
 Viber Desktop и последние версии Viber Mobile были разработаны для людей,
-исплользующих Viber на нескольких устройствах. Поэтому вы всегда можете
+использующих Viber на нескольких устройствах. Поэтому вы всегда можете
 использовать приложение, где бы вы ни были: дома, в школе, офисе или в пути.
 
 Viber полностью бесплатен и не показывает рекламу. Конфиденциальность превыше
@@ -145,7 +145,7 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 * Mon Oct 19 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-9.R
 - Disable some provides libs
 
-* Sat Aug 10 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-8.R
+* Mon Aug 10 2015 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-8.R
 - Correct .desktop file for Gnome
 
 * Tue Dec 23 2014 Vasiliy N. Glazov <vascom2@gmail.com> - 4.2.2.6-7.R
