@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 %global __provides_exclude_from ^/opt/viber/.*$
-%global __requires_exclude ^(libicu|libqface)
+%global __requires_exclude ^(libicu|libqface|libQt53D|libqrencod|libcurl.so.4\\(CURL_OPENSSL_3)
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
-Version:        4.2.2.6
-Release:        11%{dist}
+Version:        6.0.1.5
+Release:        1%{dist}
 
 Group:          Applications/Internet
 License:        Proprietary
@@ -73,7 +73,7 @@ mkdir -p %{buildroot}
 
 # Extract DEB packages:
 pushd %{buildroot}
-    ar p %{SOURCE0} data.tar.gz | gzip -d > %{name}-%{version}.x86_64.tar
+    ar p %{SOURCE0} data.tar.xz | xz -d > %{name}-%{version}.x86_64.tar
     tar -xf %{name}-%{version}.x86_64.tar
 popd
 
@@ -99,7 +99,7 @@ chmod 755 %{buildroot}/opt/%{name}/Viber
 
 # Create run srcipt:
 mkdir -p %{buildroot}%{_bindir}
-echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
+echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber/lib /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
 chmod +x %{buildroot}%{_bindir}/%{name}
 
 # Remove unused directories and tarball:
@@ -136,6 +136,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-1.R
+- update to 6.0.1.5
+
 * Wed Oct 28 2015 Arkady L. Shane <ashejn@russianfedora.pro> - 4.2.2.6-11.R
 - exclude icu 48 and libqfacbook depends
 
