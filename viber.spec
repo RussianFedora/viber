@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 %global __provides_exclude_from ^/opt/viber/.*$
-%global __requires_exclude ^(libicu|libqface|libQt53D|libqrencod|libcurl.so.4\\(CURL_OPENSSL_3)
+%global __requires_exclude ^(libicu|libqface|libQt5|libqrencod|libcurl.so.4\\(CURL_OPENSSL_3)
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        6.0.1.5
-Release:        1%{dist}
+Release:        2%{dist}
 
 Group:          Applications/Internet
 License:        Proprietary
@@ -136,6 +136,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-2.R
+- exclude all libQt5 depends
+
 * Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-1.R
 - update to 6.0.1.5
 
