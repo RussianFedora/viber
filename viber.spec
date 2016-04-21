@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global __provides_exclude_from ^/opt/viber/.*$
-%global __requires_exclude ^(libicu|libqface|libQt5|libqrencod|libxcb|libpng|libcurl.so.4\\(CURL_OPENSSL_3)
+%global __requires_exclude ^(libicu|libqface|libQt5|libqrencod|libpng|libcurl.so.4\\(CURL_OPENSSL_3)
 
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
