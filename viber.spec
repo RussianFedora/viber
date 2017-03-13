@@ -5,8 +5,8 @@
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
-Version:        6.0.1.5
-Release:        2%{dist}
+Version:        6.5.5.1481
+Release:        1%{dist}
 
 Group:          Applications/Internet
 License:        Proprietary
@@ -136,6 +136,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-1.R
+- update to 6.5.5.1481
+
 * Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-2.R
 - exclude all libQt5 depends
 
