@@ -6,7 +6,7 @@ Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
 Version:        6.5.5.1481
-Release:        1%{dist}
+Release:        2%{dist}
 
 Group:          Applications/Internet
 License:        Proprietary
@@ -99,7 +99,7 @@ chmod 755 %{buildroot}/opt/%{name}/Viber
 
 # Create run srcipt:
 mkdir -p %{buildroot}%{_bindir}
-echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber/lib /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
+echo -e '#!/bin/bash\n\nLD_LIBRARY_PATH=/opt/viber/lib QT_AUTO_SCREEN_SCALE_FACTOR=0 /opt/viber/Viber\n' > %{buildroot}%{_bindir}/%{name}
 chmod +x %{buildroot}%{_bindir}/%{name}
 
 # Remove unused directories and tarball:
@@ -136,7 +136,10 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
-* Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-1.R
+* Tue Mar 14 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-2.R
+- set QT_AUTO_SCREEN_SCALE_FACTOR=0 to look swell with HiDPI
+
+* Mon Mar 13 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-1.R
 - update to 6.5.5.1481
 
 * Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-2.R
