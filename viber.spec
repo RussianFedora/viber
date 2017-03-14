@@ -136,10 +136,10 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
-* Tue Mar 14 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-2.R
+* Tue Mar 14 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-2.R
 - set QT_AUTO_SCREEN_SCALE_FACTOR=0 to look swell with HiDPI
 
-* Mon Mar 13 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-1.R
+* Mon Mar 13 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-1.R
 - update to 6.5.5.1481
 
 * Thu Apr 21 2016 Arkady L. Shane <ashejn@russianfedora.pro> - 6.0.1.5-2.R
