@@ -5,14 +5,13 @@
 Summary:        Free instant messages and calls
 Summary(ru):    Бесплатные сообщения и звонки
 Name:           viber
-Version:        6.5.5.1481
-Release:        3%{dist}
+Version:        7.0.0.1035
+Release:        1%{dist}
 
 Group:          Applications/Internet
 License:        Proprietary
 URL:            http://viber.com
 Source0:        http://download.cdn.viber.com/cdn/desktop/Linux/%{name}.deb
-Source1:        https://negativo17.org/repos/spotify/fedora-26/x86_64/spotify-openssl-1.0.0t-3.fc26.x86_64.rpm
 
 BuildRequires:  cpio
 BuildRequires:  desktop-file-utils
@@ -79,10 +78,6 @@ mkdir -p %{buildroot}
 pushd %{buildroot}
     ar p %{SOURCE0} data.tar.xz | xz -d > %{name}-%{version}.x86_64.tar
     tar -xf %{name}-%{version}.x86_64.tar
-
-    rpm2cpio %{SOURCE1} | cpio -dium
-    cp usr/lib64/spotify-client/*.so.* opt/viber/lib
-    rm -r usr/lib64 usr/share/licenses/spotify-openssl
 popd
 
 # Modify *.desktop file:
@@ -144,6 +139,9 @@ gtk-update-icon-cache /usr/share/icons/hicolor &>/dev/null || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Wed Oct 25 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 7.0.0.1035-1
+- update to 7.0.0.1035
+
 * Wed Jun 28 2017 Arkady L. Shane <ashejn@russianfedora.pro> - 6.5.5.1481-3.R
 - ship openssl in package
 
